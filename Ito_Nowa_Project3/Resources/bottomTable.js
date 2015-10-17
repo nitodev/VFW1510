@@ -1,40 +1,41 @@
-var bottomWin = Ti.UI.createWindow({
-	backgroundColor: "white"
-});
 var loadData = require("data");
+var loadDetail = require("detail");
 
-var mySection = [];
+var collection = [];
 
+var bottomWin = Ti.UI.createWindow({
+	backgroundColor: "white",
+	title: "RANKINGS"
+});
 
-var bottomTable = Ti.UI.createTableView({
-	headerTitle: "DCI Final Top 3 Ranking",
-	top: 20,
-	height: Ti.Platform.displayCaps.platformHeight - 20,
-	width: "100%"
+var bottomTable = Ti.UI.createListView({
+	headerTitle: "DCI '13~'15 Ranking",
+	defaultItemTemplate: Ti.UI.LIST_ITEM_TEMPLATE_SUBTITLE
 });
 
 for (n in loadData.bottomData){
-	var section = Ti.UI.createTableViewSection({
+	var listSection = Ti.UI.createListSection({
 		headerTitle: n
 	});
-	if (section.headerTitle === "fifteen"){
-		section.headerTitle = "2015";
-	} else if (section.headerTitle === "fourteen"){
-		section.headerTitle = "2014";
+	if (listSection.headerTitle === "fifteen"){
+		listSection.headerTitle = "2015";
+	} else if (listSection.headerTitle === "fourteen"){
+		listSection.headerTitle = "2014";
 	} else {
-		section.headerTitle = "2013";
+		listSection.headerTitle = "2013";
 	}
-	for (var i = 0; i < loadData.bottomData[n].length; i++){
-		var row = Ti.UI.createTableViewRow({
-			title: loadData.bottomData[n][i].title,
-			hasChild: true
-		});	
-		section.add(row);
-	}
-	mySection.push(section);
+	listSection.setItems(loadData.bottomData[n]);
+	collection.push(listSection);
 }
 
-bottomTable.setData(mySection);
-bottomWin.add(bottomTable);
+
+bottomTable.addEventListener("itemclick", function(e){
+	loadDetail.getDetail(e.section.items[e.itemIndex].properties);
+});
+
+bottomTable.setSections(collection);
+
+bottomWin.add(bottomTable); 
+
 
 exports.bottomWin = bottomWin;

@@ -1,16 +1,17 @@
-var topWin = Ti.UI.createWindow({
-	backgroundColor: "white"
-});
 var loadData = require("data");
+var loadDetail = require("detail");
+
+var topWin = Ti.UI.createWindow({
+	backgroundColor: "white",
+	title: "CORPS"
+});
+
 
 var mySection = [];
 
 
 var topTable = Ti.UI.createTableView({
-	headerTitle: "Drum Corps International",
-	top: 20,
-	height: Ti.Platform.displayCaps.platformHeight - 20,
-	width: "100%"
+	headerTitle: "Drum Corps International"
 });
 
 for (n in loadData.topData){
@@ -25,6 +26,7 @@ for (n in loadData.topData){
 	for (var i = 0; i < loadData.topData[n].length; i++){
 		var row = Ti.UI.createTableViewRow({
 			title: loadData.topData[n][i].title,
+			infoDetail: loadData.topData[n][i].infoDetail,
 			hasChild: true
 		});	
 		section.add(row);
@@ -32,7 +34,13 @@ for (n in loadData.topData){
 	mySection.push(section);
 }
 
+topTable.addEventListener("click", function(e){
+	loadDetail.getDetail(e.source);
+});
+
+
 topTable.setData(mySection);
 topWin.add(topTable);
+
 
 exports.topWin = topWin;

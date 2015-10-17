@@ -1,58 +1,71 @@
 var topData = {
 	dciWorld : [
-		{title: "Academy", location: "Tempe, Arizona"},
-		{title: "Blue Devils", location: "Concord, California"},
-		{title: "Blue Knights", location: "Denver Colorado"},
-		{title: "Blue Stars", location: "La Crosse, Wisconsin"},
-		{title: "Bluecoats", location: "Canton, Ohio"},
-		{title: "Boston Crusaders", location: "Boston, Massachusetts"},
-		{title: "Cadets", location: "Allentown, Pennsylvania"},
-		{title: "Carolina Crown", location: "Fort Mill, South Carolina"},
-		{title: "Cascades", location: "Seattle, Washington"},
-		{title: "Cavaliers", location: "Rosemont, Illinois"},
-		{title: "Colts", location: "Dubuque, Iowa"},
-		{title: "Crossmen", location: "San Antonio, Texas"},
-		{title: "Jersey Surf", location: "Berlin, New Jersey"},
-		{title: "Madison Scouts", location: "Madison, Wisconsin"},
-		{title: "Mandarins", location: "Sacramento, California"},
-		{title: "Oregon Crusaders", location: "Portland, Oregon"},
-		{title: "Pacific Crest", location: "Diamond Bar, California"},
-		{title: "Phantom Regiment", location: "Rockford, Illinois"},
-		{title: "Pioneer", location: "Milwaukee, Wisconsin"},
-		{title: "Santa Clara Vanguard", location: "Santa Clara, California"},
-		{title: "Spirit of Atlanta", location: "Atlanta, Georgia"},
-		{title: "Troopers", location: "Casper, Wyoming"}
+		{title: "Academy", infoDetail: "Tempe, Arizona"},
+		{title: "Blue Devils", infoDetail: "Concord, California"},
+		{title: "Blue Knights", infoDetail: "Denver, Colorado"},
+		{title: "Blue Stars", infoDetail: "La Crosse, Wisconsin"},
+		{title: "Bluecoats", infoDetail: "Canton, Ohio"},
+		{title: "Boston Crusaders", infoDetail: "Boston, Massachusetts"},
+		{title: "Cadets", infoDetail: "Allentown, Pennsylvania"},
+		{title: "Carolina Crown", infoDetail: "Fort Mill, South Carolina"},
+		{title: "Cascades", infoDetail: "Seattle, Washington"},
+		{title: "Cavaliers", infoDetail: "Rosemont, Illinois"},
+		{title: "Colts", infoDetail: "Dubuque, Iowa"},
+		{title: "Crossmen", infoDetail: "San Antonio, Texas"},
+		{title: "Jersey Surf", infoDetail: "Berlin, New Jersey"},
+		{title: "Madison Scouts", infoDetail: "Madison, Wisconsin"},
+		{title: "Mandarins", infoDetail: "Sacramento, California"},
+		{title: "Oregon Crusaders", infoDetail: "Portland, Oregon"},
+		{title: "Pacific Crest", infoDetail: "Diamond Bar, California"},
+		{title: "Phantom Regiment", infoDetail: "Rockford, Illinois"},
+		{title: "Pioneer", infoDetail: "Milwaukee, Wisconsin"},
+		{title: "Santa Clara Vanguard", infoDetail: "Santa Clara, California"},
+		{title: "Spirit of Atlanta", infoDetail: "Atlanta, Georgia"},
+		{title: "Troopers", infoDetail: "Casper, Wyoming"}
 	],
 	dciOpen : [
-		{title: "Blue Saints", location: "Sudbury, Ontario"},
-		{title: "Genesis", location: "Austin, Texas"},
-		{title: "Heat Wave of Florida", location: "Inverness, Florida"},
-		{title: "Incognito", location: "Garden Grove, California"},
-		{title: "Legends", location: "Kalamazoo, Michigan"},
-		{title: "Music City", location: "Nashville, Tennessee"},
-		{title: "Spartans", location: "Nashua, New Hampshire"},
-		{title: "Watchmen", location: "Riverside, California"}
+		{title: "Blue Saints", infoDetail: "Sudbury, Ontario"},
+		{title: "Genesis", infoDetail: "Austin, Texas"},
+		{title: "Heat Wave of Florida", infoDetail: "Inverness, Florida"},
+		{title: "Incognito", infoDetail: "Garden Grove, California"},
+		{title: "Legends", infoDetail: "Kalamazoo, Michigan"},
+		{title: "Music City", infoDetail: "Nashville, Tennessee"},
+		{title: "Spartans", infoDetail: "Nashua, New Hampshire"},
+		{title: "Watchmen", infoDetail: "Riverside, California"}
 	]
 };
 
 var bottomData = {
 	fifteen : [
-		{title: "1. Blue Devils", score: "97.650", theme: "Ink"},
-		{title: "2. Carolina Crown", score: "97.075", theme: "Inferno"},
-		{title: "3. Bluecoats", score: "96.925", theme: "Kinetic Noise"}
+		{properties: {title: "Blue Devils", subtitle: "97.650", infoDetail: "Ink", accessoryType: 1}},
+		{properties: {title: "Carolina Crown", subtitle: "97.075", infoDetail: "Inferno", accessoryType: 1}},
+		{properties: {title: "Bluecoats", subtitle: "96.925", infoDetail: "Kinetic Noise", accessoryType: 1}}
 	],
 	fourteen : [
-		{title: "1. Blue Devils", score: "99.650", theme: "Felliniesque"},
-		{title: "2. Bluecoats", score: "97.175", theme: "TILT"},
-		{title: "3. Cadets", score: "96.875", theme: "Promise: An American Portrait"}
+		{properties: {title: "Blue Devils", subtitle: "99.650", infoDetail: "Felliniesque", accessoryType: 1}},
+		{properties: {title: "Bluecoats", subtitle: "97.175", infoDetail: "TILT", accessoryType: 1}},
+		{properties: {title: "Cadets", subtitle: "96.875", infoDetail: "Promise: An American Portrait", accessoryType: 1}}
 	],
 	thirteen : [
-		{title: "1. Carolina Crown", score: "98.300", theme: "E = MC²"},
-		{title: "2. Blue Devils", score: "98.050", theme: "The Re:Rite of Spring"},
-		{title: "3. Cadets", score: "96.950", theme: "Side><Side: The Music of Samuel Barber"}
+		{properties: {title: "Carolina Crown", subtitle: "98.300", infoDetail: "E = MC²", accessoryType: 1}},
+		{properties: {title: "Blue Devils", subtitle: "98.050", infoDetail: "The Re:Rite of Spring", accessoryType: 1}},
+		{properties: {title: "Cadets", subtitle: "96.950", infoDetail: "Side><Side: The Music of Samuel Barber", accessoryType: 1}}
 	]
 };
 
+for (n in bottomData){
+	for (i = 0; i < 3; i++){
+		if (bottomData[n][i].properties.title === "Blue Devils"){
+			bottomData[n][i].properties.image = "listImages/devils.png";
+		} else if (bottomData[n][i].properties.title === "Carolina Crown"){
+			bottomData[n][i].properties.image = "listImages/crown.png";
+		} else if (bottomData[n][i].properties.title === "Bluecoats"){
+			bottomData[n][i].properties.image = "listImages/coats.png";
+		} else {
+			bottomData[n][i].properties.image = "listImages/cadets.png";
+		}
+	}
+}
 
 
 exports.topData = topData;
