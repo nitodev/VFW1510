@@ -1,19 +1,21 @@
-var loadData = require("data");
 var loadTop = require("topTable");
 var loadBottom = require("bottomTable");
 
 Ti.UI.setBackgroundColor = "white";
 var win = Ti.UI.createWindow({
-	backgroundColor: "white"
+	backgroundColor: "white",
+	title: "Drum Corps International"
 });
 var imgView = Ti.UI.createImageView({
 	image: "dciLogo.png",
 	height: 200
 });
 
+// creating navigation window for better navigation
 var navGroup = Ti.UI.iOS.createNavigationWindow({
 	window: win
 });
+
 
 var topHalf = Ti.UI.createView({
 	top: (Ti.Platform.displayCaps.platformHeight / 6) - 60,
@@ -45,7 +47,7 @@ var bottomLabel = Ti.UI.createLabel({
 	name: bottomHalf.name
 });
 
-
+// event propogation
 win.addEventListener("click", function(e){
 	if (e.source.name === "top"){
 		navGroup.openWindow(loadTop.topWin);
@@ -58,5 +60,3 @@ topHalf.add(topLabel);
 bottomHalf.add(bottomLabel);
 win.add(imgView, topHalf, bottomHalf);
 navGroup.open();
-
-//exports.navGroup = navGroup;

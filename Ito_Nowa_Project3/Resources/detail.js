@@ -1,23 +1,28 @@
-//var loadData = require("data");
-var loadTop = require("topTable");
-var loadBottom = require("bottomTable");
-
 var getDetail = function(info){
 	var detailWin = Ti.UI.createWindow({
-		backgroundColor: "white"
+		backgroundColor: "black"
 	});
 	var detailImage = Ti.UI.createImageView({
-		image: "images/" + info.title + ".png"
+		image: "images/" + info.title + ".jpg",
+		width: Ti.Platform.displayCaps.platformWidth
+	});
+	var imgWrapper = Ti.UI.createScrollView({
+		maxZoomScale: 2.0
 	});
 	var detailTitle = Ti.UI.createLabel({
 		text: info.title,
-		top: 80
+		font: {fontWeight: "bold", fontSize: 20},
+		top: 80,
+		color: "white"
 	});
 	var detailLabel = Ti.UI.createLabel({
 		text: info.infoDetail,
-		bottom: 80
+		font: {fontSize: 14},
+		bottom: 80,
+		color: "white"
 	});
-	detailWin.add(detailImage, detailLabel, detailTitle);
+	imgWrapper.add(detailImage);
+	detailWin.add(imgWrapper, detailLabel, detailTitle);
 	navGroup.openWindow(detailWin);
 };
 

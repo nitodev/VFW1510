@@ -53,6 +53,7 @@ var bottomData = {
 	]
 };
 
+// creating property of 'image' for bottomData and assigning appropriate pictures based on the title
 for (n in bottomData){
 	for (i = 0; i < 3; i++){
 		if (bottomData[n][i].properties.title === "Blue Devils"){

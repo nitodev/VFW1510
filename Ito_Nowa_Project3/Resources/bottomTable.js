@@ -1,12 +1,14 @@
 var loadData = require("data");
 var loadDetail = require("detail");
 
-var collection = [];
-
 var bottomWin = Ti.UI.createWindow({
 	backgroundColor: "white",
 	title: "RANKINGS"
 });
+
+
+var collection = [];
+
 
 var bottomTable = Ti.UI.createListView({
 	headerTitle: "DCI '13~'15 Ranking",
@@ -28,14 +30,13 @@ for (n in loadData.bottomData){
 	collection.push(listSection);
 }
 
-
+// passing function to detail.js
 bottomTable.addEventListener("itemclick", function(e){
 	loadDetail.getDetail(e.section.items[e.itemIndex].properties);
 });
 
+
 bottomTable.setSections(collection);
-
 bottomWin.add(bottomTable); 
-
 
 exports.bottomWin = bottomWin;

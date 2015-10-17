@@ -34,6 +34,7 @@ for (n in loadData.topData){
 	mySection.push(section);
 }
 
+// passing function to detail.js
 topTable.addEventListener("click", function(e){
 	loadDetail.getDetail(e.source);
 });
@@ -41,6 +42,5 @@ topTable.addEventListener("click", function(e){
 
 topTable.setData(mySection);
 topWin.add(topTable);
-
 
 exports.topWin = topWin;
