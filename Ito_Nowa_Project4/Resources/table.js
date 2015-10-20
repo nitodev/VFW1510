@@ -2,4 +2,8 @@ var tableWin = Ti.UI.createWindow({
 	backgroundColor: 'white'
 });
 
-exports.tableWin = tableWin;
+var tableNav = Ti.UI.iOS.createNavigationWindow({
+	window: tableWin
+});
+
+exports.tableNav = tableNav;

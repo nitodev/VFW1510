@@ -8,7 +8,7 @@ var win = Ti.UI.createWindow({
 });
 
 var topButton = Ti.UI.createButton({
-	title: 'Image Gallery',
+	title: 'Gallery',
 	width: '60%',
 	height: 70,
 	top: 120,
@@ -16,7 +16,7 @@ var topButton = Ti.UI.createButton({
 	color: 'white',
 	borderRadius: 15,
 	borderColor: 'white',
-	opacity: 0.7
+	opacity: 0.8
 });
 
 var middleButton = Ti.UI.createButton({
@@ -28,7 +28,7 @@ var middleButton = Ti.UI.createButton({
 	color: 'white',
 	borderRadius: 15,
 	borderColor: 'white',
-	opacity: 0.7
+	opacity: 0.8
 });
 
 var bottomButton = Ti.UI.createButton({
@@ -40,7 +40,7 @@ var bottomButton = Ti.UI.createButton({
 	color: 'white',
 	borderRadius: 15,
 	borderColor: 'white',
-	opacity: 0.7
+	opacity: 0.8
 });
 
 var name = Ti.UI.createLabel({
@@ -51,11 +51,11 @@ var name = Ti.UI.createLabel({
 });
 
 win.addEventListener('click', function(e){
-	if(e.source.title == "Image Gallery"){
+	if(e.source.title == 'Gallery'){
 		loadGallery.galleryWin.open();
-	} else if (e.source.title == "Table"){
-		loadTable.tableWin.open();
-	} else {
+	} else if (e.source.title == 'Table'){
+		loadTable.tableNav.open();
+	} else if (e.source.title == 'Experimental'){
 		loadExperimental.experimentalWin.open();
 	}
 });
