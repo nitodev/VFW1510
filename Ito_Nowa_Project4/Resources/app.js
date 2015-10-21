@@ -26,7 +26,7 @@ var middleButton = Ti.UI.createButton({
 	top: topButton.top + topButton.height + 50,
 	backgroundColor: '#0080FF',
 	color: 'white',
-	borderRadius: 15,
+	borderRadius: 15, 
 	borderColor: 'white',
 	opacity: 0.8
 });
