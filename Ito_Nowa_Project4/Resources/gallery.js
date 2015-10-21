@@ -23,7 +23,7 @@ var randomizer = Ti.UI.createButton({
 	height: 50,
 	backgroundColor: 'gray',
 	bottom: 60,
-	title: 'Begin!',
+	title: 'Begin',
 	borderRadius: 15,
 	color: 'white'
 });
@@ -35,23 +35,26 @@ var title = Ti.UI.createLabel({
 
 var currentNumber;
 var imageView = Ti.UI.createImageView();
+var randomNumber;
 
-// TODO: fix this
+
+var randomizeThis = function(){
+	randomNumber = Math.floor(Math.random() * (5 - 0) + 0);
+};
+
 randomizer.addEventListener('singletap', function(){
-	var randomNumber = Math.floor(Math.random() * (5 - 0) + 0);
-	console.log(randomNumber);
-	while (currentNumber === randomNumber){ 
-		currentNumber =0;
-		console.log("while");
-		// randomNumber;
-		// if (randomNumber != currentNumber){
+	randomizer.title = 'Randomize';
+	randomizeThis();
+	while (randomNumber == currentNumber){
+		randomizeThis();
+		if (randomNumber != currentNumber){
 			break;
-		// }
+		}
 	}
 	currentNumber = randomNumber;
 	imageView.image = 'pictures/' + loadData.pictures[randomNumber].title + '.jpg';
-	randomizer.title = 'Randomize';
 });
+
 
 
 topBanner.add(title);
