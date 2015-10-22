@@ -17,6 +17,12 @@ var divider = Ti.UI.createView({
 	top: topBanner.height + topBanner.top,
 	backgroundColor: 'white'
 });
+var hint = Ti.UI.createLabel({
+	bottom: 0,
+	text: 'Swipe from left to exit',
+	font: {fontSize: 14},
+	color: 'gray'
+});
 
 var randomizer = Ti.UI.createButton({
 	width: 100,
@@ -57,7 +63,13 @@ randomizer.addEventListener('singletap', function(){
 
 
 
+galleryWin.addEventListener('swipe', function(e){
+	if (e.direction == 'right'){
+		galleryWin.close({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+	}
+});
+
 topBanner.add(title);
-galleryWin.add(topBanner, divider, randomizer, imageView);
+galleryWin.add(hint, topBanner, divider, randomizer, imageView);
 
 exports.galleryWin = galleryWin;

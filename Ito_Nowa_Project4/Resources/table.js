@@ -1,4 +1,5 @@
 var loadData = require('data');
+var loadDetail = require('detail');
 
 
 var tableWin = Ti.UI.createWindow({
@@ -12,8 +13,10 @@ var tableNav = Ti.UI.iOS.createNavigationWindow({
 var mySection = [];
 
 var tableView = Ti.UI.createTableView({
-	headerTitle: 'List of Galaxies'
+	headerTitle: 'List of Galaxies',
+	footerTitle: 'Swipe from left to exit'
 });
+
 
 for (n in loadData.galaxies){
 	var section = Ti.UI.createTableViewSection({
@@ -27,7 +30,8 @@ for (n in loadData.galaxies){
 	for (var g = 0; g < loadData.galaxies[n].length; g++){
 		var row = Ti.UI.createTableViewRow({
 			title: loadData.galaxies[n][g].title,
-			infoDetail: loadData.galaxies[n][g].description,
+			desc: loadData.galaxies[n][g].description,
+			image: loadData.galaxies[n][g].image,
 			hasChild: true
 		});
 		section.add(row);
@@ -38,8 +42,14 @@ for (n in loadData.galaxies){
 tableView.setData(mySection);
 tableWin.add(tableView);
 
+tableNav.addEventListener('swipe', function(e){
+	if (e.direction == 'right'){
+		tableNav.close({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
+	}
+});
 
-//console.log(loadData.galaxies.nakedEye[0].image);
-//console.log(loadData.galaxies.named.length);
+tableView.addEventListener('click', function(v){
+	loadDetail.getDetail(v.source);
+});
 
 exports.tableNav = tableNav;
