@@ -1,10 +1,12 @@
 var loadGallery = require('gallery');
 var loadTable = require('table');
-var loadExperimental = require('experimental');
+var loadSetting = require('setting');
 
 var win = Ti.UI.createWindow({
 	backgroundColor: 'white',
-	backgroundImage: 'galactic.jpg'
+	backgroundImage: 'galactic.jpg',
+	statusBarStyle: 1,
+	top: 20
 });
 
 var topButton = Ti.UI.createButton({
@@ -32,7 +34,7 @@ var middleButton = Ti.UI.createButton({
 });
 
 var bottomButton = Ti.UI.createButton({
-	title: 'Experimental',
+	title: 'Setting',
 	width: '60%',
 	height: 70,
 	top: middleButton.top + middleButton.height + 50,
@@ -52,11 +54,11 @@ var name = Ti.UI.createLabel({
 
 win.addEventListener('click', function(e){
 	if(e.source.title == 'Gallery'){
-		loadGallery.galleryWin.open();
+		loadGallery.galleryWin.open({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
 	} else if (e.source.title == 'Table'){
 		loadTable.tableNav.open();
-	} else if (e.source.title == 'Experimental'){
-		loadExperimental.experimentalWin.open();
+	} else if (e.source.title == 'Setting'){
+		loadSetting.settingWin.open({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});
 	}
 });
 
