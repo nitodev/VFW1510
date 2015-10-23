@@ -39,11 +39,11 @@ var title = Ti.UI.createLabel({
 	color: 'white'
 });
 
-var currentNumber;
+var currentNumber; // saving the random number for truly randomized number
 var imageView = Ti.UI.createImageView();
-var randomNumber;
+var randomNumber; // creating variable for function access within a function
 
-
+//randomized function
 var randomizeThis = function(){
 	randomNumber = Math.floor(Math.random() * (5 - 0) + 0);
 };
@@ -62,7 +62,7 @@ randomizer.addEventListener('singletap', function(){
 });
 
 
-
+// using swipe gesture for navigation
 galleryWin.addEventListener('swipe', function(e){
 	if (e.direction == 'right'){
 		galleryWin.close({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
@@ -73,3 +73,4 @@ topBanner.add(title);
 galleryWin.add(hint, topBanner, divider, randomizer, imageView);
 
 exports.galleryWin = galleryWin;
+exports.divider = divider;

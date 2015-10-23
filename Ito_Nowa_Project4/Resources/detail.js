@@ -21,3 +21,4 @@ var getDetail = function(tableDetail){
 };
 
 exports.getDetail = getDetail;
+

@@ -6,6 +6,7 @@ var tableWin = Ti.UI.createWindow({
 	backgroundColor: 'white',
 	title: 'Galaxies'
 });
+// setting up navigation window specific for tableview
 var tableNav = Ti.UI.iOS.createNavigationWindow({
 	window: tableWin
 });
@@ -42,6 +43,7 @@ for (n in loadData.galaxies){
 tableView.setData(mySection);
 tableWin.add(tableView);
 
+// setting up swipe gesture for navigation on the first window
 tableNav.addEventListener('swipe', function(e){
 	if (e.direction == 'right'){
 		tableNav.close({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});

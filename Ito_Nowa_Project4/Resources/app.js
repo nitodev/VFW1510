@@ -1,6 +1,9 @@
+// loading files
 var loadGallery = require('gallery');
 var loadTable = require('table');
 var loadSetting = require('setting');
+
+
 
 var win = Ti.UI.createWindow({
 	backgroundColor: 'white',
@@ -52,6 +55,8 @@ var name = Ti.UI.createLabel({
 	right: 5
 });
 
+
+// eventlistener propagation for the buttons
 win.addEventListener('click', function(e){
 	if(e.source.title == 'Gallery'){
 		loadGallery.galleryWin.open({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_RIGHT});

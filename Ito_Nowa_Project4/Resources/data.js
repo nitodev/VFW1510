@@ -45,6 +45,8 @@ var galaxies = {
 	]
 };
 
+
+// adding images to var galaxies using individual titles
 for (i = 0; i < galaxies.named.length; i++){
 	galaxies.named[i].image = 'galaxies/' + galaxies.named[i].title + '.jpg';
 }

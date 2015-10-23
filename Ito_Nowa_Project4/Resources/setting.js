@@ -1,3 +1,6 @@
+var loadGallery = require('gallery');
+
+
 var settingWin = Ti.UI.createWindow({
 	backgroundColor: 'black',
 	statusBarStyle: 1
@@ -32,34 +35,31 @@ var themeSwitch = Ti.UI.createSwitch({
 	right: 10,
 	top: 120
 });
-var zoomSwitch = Ti.UI.createSwitch({
-	value: false,
-	right: themeSwitch.right,
-	top: themeSwitch.top + 50
-});
 
 var themeSwitchLabel = Ti.UI.createLabel({
-	text: 'Enable White Background',
+	text: 'Enable White Image Background',
+	font: {fontSize: 15},
 	top: themeSwitch.top,
 	left: 10,
-	color: 'white'
-});
-var zoomSwitchLabel = Ti.UI.createLabel({
-	text: 'Enable Image Zoom',
-	top: zoomSwitch.top,
-	left: 10,
-	color: 'white'
+	color: 'white',
+	top: divider.top + 25
 });
 
+// conditions for the switch
 themeSwitch.addEventListener('change',function(e){
-  console.log('Switch value: ' + themeSwitch.value);
+  if (themeSwitch.value === true){
+  	loadGallery.galleryWin.backgroundColor = 'white';
+  	loadGallery.galleryWin.statusBarStyle = 0;
+  	loadGallery.divider.backgroundColor = 'black';
+  } else if (themeSwitch.value === false){
+  	loadGallery.galleryWin.backgroundColor = 'black';
+  	loadGallery.galleryWin.statusBarStyle = 1;
+  	loadGallery.divider.backgroundColor = 'white';
+  }
 });
-zoomSwitch.addEventListener('change',function(e){
-  console.log('Switch value: ' + zoomSwitch.value);
-});
 
 
-
+// swipe gesture for navigation
 settingWin.addEventListener('swipe', function(e){
 	if (e.direction == 'right'){
 		settingWin.close({transition: Ti.UI.iPhone.AnimationStyle.FLIP_FROM_LEFT});
@@ -67,5 +67,5 @@ settingWin.addEventListener('swipe', function(e){
 });
 
 topBanner.add(title);
-settingWin.add(topBanner, divider, hint, zoomSwitch, themeSwitch, themeSwitchLabel, zoomSwitchLabel);
+settingWin.add(topBanner, divider, hint, themeSwitch, themeSwitchLabel);
 exports.settingWin = settingWin;
